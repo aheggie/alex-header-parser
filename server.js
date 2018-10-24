@@ -29,14 +29,13 @@ app.get("/", function (req, res) {
 
 // utility function
 
-const reqProcess = req =>
-{s
+const reqProcess = req => { return {keys:Object.keys(req.headers), language: req.headers["accept-language"], software: req.headers["user-agent"]} }
 
 
 app
   .route("/api/whomai")
   .get((req, res) =>
-       res.send(req.headers["user-agent"])
+       res.json(reqProcess(req))
        )
 
 
