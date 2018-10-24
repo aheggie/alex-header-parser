@@ -29,7 +29,11 @@ app.get("/", function (req, res) {
 
 // utility function
 
-const reqProcess = req => { return {keys:Object.keys(req.headers), language: req.headers["accept-language"], software: req.headers["user-agent"]} }
+//ref for ipaddress: https://stackfame.com/get-ip-address-node
+const reqProcess = req => { return {ipaddress:req.headers["x-forwarded-for"] || req.connection.remoteAddress,
+                                    language: req.headers["accept-language"],
+                                    software: req.headers["user-agent"]}
+                          }
 
 
 app
