@@ -13,16 +13,31 @@ app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+// logger middle ware
+
+const logger = (req, res, next) => {
+  console.log(req)
+  console.log(res)
+  next()
+}
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
 
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
+// utility function
+
+const reqProcess = req =>
+{s
+
+
+app
+  .route("/api/whomai")
+  .get((req, res) =>
+       res.send(req.headers["user-agent"])
+       )
 
 
 
